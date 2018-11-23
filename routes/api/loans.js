@@ -56,7 +56,7 @@ router.put('/:id', (req, res) => {
 router.get('/history/:id', (req, res) => {
   PaymentHistory.find({loan:req.params.id})
     .populate('loan')
-    .sort({ date_paid: -1 })
+    .sort({ date_paid: 1 })
     .then(payments => res.json(payments))
 })
 

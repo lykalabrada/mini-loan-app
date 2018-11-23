@@ -55,6 +55,7 @@ export class RepayLoan extends Component {
             <Table striped>
               <thead>
                 <tr>
+                  <th></th>
                   <th>Amount Paid</th>
                   <th>Balance</th>
                   <th>Date Paid</th>
@@ -63,6 +64,7 @@ export class RepayLoan extends Component {
               <tbody>
                 {payments.map(({ _id, amount_paid, remaining_balance, date_paid },index) => (
                   <tr key={_id}>
+                    <td>Week {index+1}</td>
                     <td>{amount_paid}</td>
                     <td>{remaining_balance} months</td>
                     <td><Moment format="YYYY-MM-DD HH:mm">{date_paid}</Moment></td>

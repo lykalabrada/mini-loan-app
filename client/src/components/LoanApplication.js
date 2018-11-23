@@ -50,35 +50,42 @@ export class LoanApplication extends Component {
             <CardBody>
              <CardTitle className="mb-5">Loan Form</CardTitle>
               <Form onSubmit={this.onSubmit}>
-                <FormGroup>
-                  <div className="mb-2">Full Name</div>
-                  <h3>{full_name}</h3>
-                </FormGroup>
-                <FormGroup>
-                  <div className="mb-2">Email</div>
-                  <h4>{email}</h4>
-                </FormGroup>
+                <Row>
+                  <Col md="6">
+                  <FormGroup>
+                    <div className="mb-2">Full Name</div>
+                    <h3>{full_name}</h3>
+                  </FormGroup>
+                  </Col>
+                  <Col md="6">
+                  <FormGroup>
+                    <div className="mb-2">Email</div>
+                    <h4>{email}</h4>
+                  </FormGroup>
+                  </Col>
+                </Row>
+
                 <hr className="my-4"/>
                 <FormGroup>
-                  <div className="mb-2">Loan</div>
+                  <div className="mb-2">Loan Type</div>
                   <Input type="select" name="loan_type"
                     id="loan_type" onChange={this.onChange} >
-                    <option default>-- Select Loan --</option>
+                    <option default>--</option>
                     <option value="Personal">Personal Loan</option>
                     <option value="Business">Business Loan</option>
                   </Input>
                 </FormGroup>
                 <FormGroup>
-                  <div className="mb-2">Amount</div>
+                  <div className="mb-2">Loan Amount</div>
                   <InputGroup size="lg">
                     <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                     <Input type="text" name="loan_amount" id="loan_amount" placeholder="Enter Loan Amount" onChange={this.onChange} />
                   </InputGroup>
                 </FormGroup>
                 <FormGroup>
-                  <div className="mb-2">Term</div>
+                  <div className="mb-2">Loan Term (in months)</div>
                   <Input type="select" name="loan_term" id="loan_term" onChange={this.onChange}>
-                    <option default>-- Select Term --</option>
+                    <option default>--</option>
                     <option value="1">1 month</option>
                     <option value="2">2 months</option>
                     <option value="3">3 months</option>
