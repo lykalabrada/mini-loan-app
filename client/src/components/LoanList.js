@@ -29,7 +29,7 @@ export class LoanList extends Component {
               </Col>
               <Col md="4">
                 <h3>
-                {
+                $ {
                   loans.reduce((sum, i) => (
                     sum += i.loan_balance
                   ), 0)
@@ -39,7 +39,7 @@ export class LoanList extends Component {
                 <div>Total Balance</div>
               </Col>
               <Col md="4">
-                  <Link to="/" size="lg" color="secondary" className="btn btn-success btn-lg">Add new Loan</Link>
+                  <Link to="/loan" size="lg" color="secondary" className="btn btn-success btn-lg">Add new Loan</Link>
               </Col>
               </Row>
             </CardBody>
@@ -65,13 +65,13 @@ export class LoanList extends Component {
               <td>{full_name}</td>
               <td>{loan_term} months</td>
               <td>
-                { loan_amount.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
+                $ { loan_amount.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
               </td>
               <td>
-                { loan_balance.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
+                $ { loan_balance.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
               </td>
               <td>
-                { weekly_payment.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
+                $ { weekly_payment.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
               </td>
               <td>
                 <Link to={`/repay/${_id}`} className="btn btn-success btn-sm">
