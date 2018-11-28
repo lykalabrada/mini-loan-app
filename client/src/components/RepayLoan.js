@@ -46,7 +46,7 @@ export class RepayLoan extends Component {
   }
 
   render() {
-    const { loan, payments } = this.props.item
+    const { loan:{loan_balance, weekly_payment}, payments } = this.props.item
     return (
       <div>
         <h1 className="mb-5">Repay Loan</h1>
@@ -65,8 +65,8 @@ export class RepayLoan extends Component {
                 {payments.map(({ _id, amount_paid, remaining_balance, date_paid },index) => (
                   <tr key={_id}>
                     <td>Week {index+1}</td>
-                    <td>{amount_paid}</td>
-                    <td>{remaining_balance} months</td>
+                    <td>{ amount_paid.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }</td>
+                    <td>{ remaining_balance.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }</td>
                     <td><Moment format="YYYY-MM-DD HH:mm">{date_paid}</Moment></td>
                   </tr>
                 ))}
@@ -80,11 +80,21 @@ export class RepayLoan extends Component {
                 <Form onSubmit={this.onSubmit}>
                   <FormGroup>
                     <div className="mb-2">Your Loan Balance</div>
-                    <h4>$ {loan.loan_balance}</h4>
+                    {
+                      loan_balance
+                      ? loan_balance.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2})
+                      : loan_balance
+                    }
                   </FormGroup>
                   <FormGroup>
                     <div className="mb-2">Weekly Payment</div>
-                    <h4>$ {loan.weekly_payment}</h4>
+                    <h4>$
+                      {
+                        weekly_payment
+                        ? weekly_payment.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2})
+                        : weekly_payment
+                      }
+                    </h4>
                   </FormGroup>
                   <hr className="my-4"/>
                   <FormGroup>

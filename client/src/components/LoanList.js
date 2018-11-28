@@ -29,9 +29,12 @@ export class LoanList extends Component {
               </Col>
               <Col md="4">
                 <h3>
-                {loans.reduce((sum, i) => (
-                  sum += i.loan_balance
-                ), 0)}
+                {
+                  loans.reduce((sum, i) => (
+                    sum += i.loan_balance
+                  ), 0)
+                  .toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2})
+                }
                 </h3>
                 <div>Total Balance</div>
               </Col>
@@ -61,9 +64,15 @@ export class LoanList extends Component {
               <td><Moment format="YYYY-MM-DD HH:mm">{date_applied}</Moment></td>
               <td>{full_name}</td>
               <td>{loan_term} months</td>
-              <td>{loan_amount}</td>
-              <td>{loan_balance}</td>
-              <td>{weekly_payment}</td>
+              <td>
+                { loan_amount.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
+              </td>
+              <td>
+                { loan_balance.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
+              </td>
+              <td>
+                { weekly_payment.toLocaleString('en-US', {maximumFractionDigits:2,minimumFractionDigits:2}) }
+              </td>
               <td>
                 <Link to={`/repay/${_id}`} className="btn btn-success btn-sm">
                   Repay
